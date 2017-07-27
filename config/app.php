@@ -167,7 +167,12 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        Firebird\FirebirdServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+
+		'Firebird\FirebirdServiceProvider',
         /*
          * Application Service Providers...
          */
@@ -225,6 +230,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'JWTAuth'=>Tymon\JWTAuth\Facades\JWTAuth::class,
 
     ],
 
