@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get("/v1/user",function(Request $request){
-	return "test api";
+	return json_encode("test api");
 })->middleware('jwt.auth');
 
 Route::get('/v1/auth/login',[

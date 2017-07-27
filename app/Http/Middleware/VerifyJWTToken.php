@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use JWTAuth;
+use App\User;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
@@ -12,12 +13,7 @@ class VerifyJWTToken
     public function handle($request, Closure $next)
     {
         try{
-            $user = User::where( 'UserName', $tokenPayload->UserName )->first();
-            if(!$user){
-                return response()->json("Error user");
-            }
-            //$user = JWTAuth::toUser($request->input('token'));
-            //$user = JWTAuth::parseToken()->authenticate();
+            $user = JWTAuth::toUser(request()->token);
         }catch (JWTException $e) {
             if($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException) {
                 return response()->json(['token_expired'], $e->getStatusCode());
