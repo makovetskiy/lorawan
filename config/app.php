@@ -169,7 +169,8 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Firebird\FirebirdServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
-
+        
+        Barryvdh\Cors\ServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
 		'Firebird\FirebirdServiceProvider',

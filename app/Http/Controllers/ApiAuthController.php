@@ -14,13 +14,11 @@ class ApiAuthController extends Controller
     {
 
     	$token = null;
-
     	$credentials = request()->only('UserName','StoredPassword');
-
     	$user = User::where('UserName','=', request()->UserName)->first();
-
+    	
     	if(!$user){
-    		return response()->json(['user name not found'], 422);
+    		return response()->json(['user name'.request()->UserName.' not found'], 422);
     	}
 
     	if (!Hash::check(request()->StoredPassword, $user->StoredPassword))  {

@@ -17,7 +17,32 @@ Route::get("/v1/user",function(Request $request){
 	return json_encode("test api");
 })->middleware('jwt.auth');
 
-Route::get('/v1/auth/login',[
+Route::get('v1/radiomodules/all',[
+	'uses' => 'RadioModuleController@getAllRadiomodules'
+]);
+Route::get('v1/radiomodules/type/all',[
+	'uses' => 'RadioModuleController@getAllRadiomodulesTypes'
+]);
+Route::get('v1/radiomodules/type/all',[
+	'uses' => 'RadioModuleController@getAllRadiomodulesTypes'
+]);
+
+Route::get('v1/radiomodules/type/{id}',[
+	'uses' => 'RadioModuleController@showRadiomoduleTypeImageById'
+]);
+
+Route::get('v1/application/all',[
+	'uses' => 'ApplicationController@getAllApication'
+]);
+Route::post('v1/application/create',[
+	'uses' => 'ApplicationController@createNewApplication'
+]);
+
+Route::get('v1/abonent/all',[
+	'uses' => 'AbonentController@getAllAbonent'
+]);
+
+Route::post('/v1/auth/login',[
 	'uses' => 'ApiAuthController@login'
 ]);
 

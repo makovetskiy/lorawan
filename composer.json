@@ -7,6 +7,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.4",
+        "barryvdh/laravel-cors": "^0.9.2",
         "jacquestvanzuydam/laravel-firebird": "dev-5.4-support",
         "laravel/framework": "5.4.*",
         "laravel/passport": "^4.0@dev",
