@@ -18,11 +18,11 @@ class ApiAuthController extends Controller
     	$user = User::where('UserName','=', request()->UserName)->first();
     	
     	if(!$user){
-    		return response()->json(['user name'.request()->UserName.' not found'], 422);
+    		return response()->json(['Логин: '. request()->UserName.' не найден'], 422,[], JSON_UNESCAPED_UNICODE);
     	}
 
     	if (!Hash::check(request()->StoredPassword, $user->StoredPassword))  {
-		  return response()->json(['error password'], 422);
+		  return response()->json(['Ошибка пароля'], 422,[], JSON_UNESCAPED_UNICODE);
 		}
         
         

@@ -8,10 +8,6 @@ class Application extends Model
 {
     protected $table = 'Application';
     protected $primaryKey = 'AppEUI';
+    public $incrementing = false;
     public $timestamps = false;
-    protected $fillable = [
-        'AppEUI',
-        'Name',
-        'Code'
-    ];
 }

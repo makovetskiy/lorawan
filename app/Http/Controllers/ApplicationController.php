@@ -12,13 +12,25 @@ class ApplicationController extends Controller
         return response()->json($app,200);
     }
 
-    public function createNewApplication(){
-        $app = Application::create([
-          'AppEUI' => 'qwert',
-          'Name' => request()->Name,
-          'Code' => null
-        ]);
+    public function createNewApplication(Request $request){
+        $app =Application::where('AppEUI', request()->AppEUI)->first();
+        if($app){
+            $app->AppEUI = request()->AppEUI;
+            $app->Name = request()->Name;
+            $app->save();
+            return response()->json($app,200);
+        }
+        else{
+            $app = new Application;
+            $app->AppEUI = request()->AppEUI;
+            $app->Name = request()->Name;
+            $app->save();
+            return response()->json($app,200);
+        }
+    }
 
-        return response()->json($app,200);
+    public function deleteApplication(){
+        $deletedRows = Application::where('AppEUI', request()->AppEUI)->delete();
+        return response()->json($deletedRows,200);
     }
 }
